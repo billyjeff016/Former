@@ -25,6 +25,7 @@ public class Cirkel extends Form {
 
     @Override
     public void draw(Graphics g) {
+        move(0,0);
        g.setColor(Color.GREEN);
        g.setColor(color);
        g.fillOval(xPos-(radie/2), yPos-(radie/2), radie, radie);

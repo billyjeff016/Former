@@ -25,6 +25,7 @@ public class Rektangel extends Form {
 
     @Override
     public void draw(Graphics g) {
+        move(0,0);
 g.setColor(Color.BLUE);
 g.setColor(color);
 g.fillRect(xPos-(bas/2), yPos-(höjd/2), bas, höjd);

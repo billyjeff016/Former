@@ -26,6 +26,7 @@ public class Triangel extends Form {
     
     @Override
     public void draw(Graphics g) {
+        move(0,0);
       int[]x={xPos-(bas/2), xPos + bas/2, xPos};
       int[]y={yPos+(höjd/2), yPos+(höjd/2), yPos-(höjd/2)};
       g.setColor(Color.YELLOW);

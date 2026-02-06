@@ -36,8 +36,20 @@ public Point getPos(){
 public void setRunning(boolean run){
 this.running = run;    
 }
+boolean Höger = false;
 public void move(int x, int y){
-    
+    if (Höger) {
+        xPos+=5;
+        if (xPos>=350) {
+            Höger = false;
+        }
+    }else{
+        xPos-=5;
+        if (xPos<=50) {
+            xPos+=5;
+            Höger = true;
+        }
+    }
 }
 public abstract void draw(Graphics g);
 public abstract String WhatAmI();

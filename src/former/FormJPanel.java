@@ -12,7 +12,9 @@ import java.util.ArrayList;
  *
  * @author darre01
  */
-public class FormJPanel extends javax.swing.JPanel {
+public class FormJPanel extends javax.swing.JPanel implements Runnable {
+    private volatile Thread trad;
+    private boolean running;
 private String val="";
 ArrayList<Form> former = new ArrayList<>();
 FileManager fmgr = new FileManager();
@@ -145,6 +147,7 @@ FileManager fmgr = new FileManager();
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
        val="Start";
+       start();
        repaint();
     }//GEN-LAST:event_btnStartActionPerformed
 
@@ -209,4 +212,29 @@ protected void paintComponent(Graphics g){
     private javax.swing.JRadioButton rbtnTriangel;
     private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
+private void start(){
+    if (trad == null) {
+        trad = new Thread(this);
+        trad.start();
+        this.running = true;
+    }
+}
+private void stop(){
+    if (trad != null) {
+        this.running = false;
+        trad = null;
+    }
+}
+    @Override
+    public void run(){
+    Thread thisThread=Thread.currentThread();
+    while(trad == thisThread){
+        try{
+            System.out.println("run");
+            Thread.sleep(30);
+        }catch (InterruptedException e){
+            
+        }repaint();
+    }
+}
 }
